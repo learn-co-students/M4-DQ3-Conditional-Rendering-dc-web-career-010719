@@ -3,7 +3,16 @@ import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {selectedPage: 'profile'}
+  }
 
+  onSelectTab = (event) => {
+    const tab = event.target.id
+    this.setState({selectedPage: tab})
+    console.log(tab)
+  }
 
   render() {
 
@@ -13,12 +22,26 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
+    let page 
+    switch (this.state.selectedPage) {
+      case 'profile':
+        page = <Profile />
+        break
+      case 'photo':
+        page = <Photos />
+        break
+      case 'cocktail':
+        page = <Cocktails />
+        break
+      case 'pokemon':
+        page = <Pokemon />
+        break
+    }
 
     return (
       <div>
-        <MenuBar />
-        {detailsToDisplay}
+        <MenuBar onSelectTab={this.onSelectTab} selectedPage={this.state.selectedPage} />
+        {page}
       </div>
     )
   }
