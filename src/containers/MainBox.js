@@ -3,7 +3,28 @@ import MenuBar from '../components/MenuBar.js'
 import { Profile, Photos, Cocktails, Pokemon} from '../components/Pages.js'
 
 class MainBox extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      detailsToDisplay: null
+    }
+  }
 
+  onClickOfProfile = () => {
+    this.setState({detailsToDisplay: Profile()})
+  }
+
+  onClickOfPhoto = () => {
+    this.setState({detailsToDisplay: Photos()})
+  }
+
+  onClickOfCocktail = () => {
+    this.setState({detailsToDisplay: Cocktails()})
+  }
+
+  onClickOfPokemon = () => {
+    this.setState({detailsToDisplay: Pokemon()})
+  }
 
   render() {
 
@@ -13,11 +34,16 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>Hi, I'm a div!</div>
+    const detailsToDisplay = <div>{this.state.detailsToDisplay}</div>
 
     return (
       <div>
-        <MenuBar />
+        <MenuBar
+          onClickOfProfile={this.onClickOfProfile}
+          onClickOfPhoto={this.onClickOfPhoto}
+          onClickOfCocktail={this.onClickOfCocktail}
+          onClickOfPokemon={this.onClickOfPokemon}
+        />
         {detailsToDisplay}
       </div>
     )
