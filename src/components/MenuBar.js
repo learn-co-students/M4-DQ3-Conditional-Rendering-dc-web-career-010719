@@ -12,23 +12,23 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
-
+  console.log(props)
   return (
     <div className="ui four item menu">
-      <a className="item active" id="profile">
+      <a onClick={(e) => props.onSelectTab(e.target.id)} className={props.selectedPage === 'profile' ? 'item active' : 'item'} id="profile">
         <i className="user large icon" id="profile"/>
       </a>
 
-      <a className="item" id="photo">
+      <a onClick={(e) => props.onSelectTab(e.target.id)} className={props.selectedPage === 'photo' ? 'item active' : 'item'} id="photo">
         <i className="photo large icon" id="photo"/>
       </a>
 
-      <a className="item" id="cocktail">
+      <a onClick={(e) => props.onSelectTab(e.target.id)} className={props.selectedPage === 'cocktail' ? 'item active' : 'item'} id="cocktail">
         <i className="cocktail large icon" id="cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
+      <a onClick={(e) => props.onSelectTab(e.target.id)}className="item" id="pokemon"> 
+        <i className={props.selectedPage === 'pokemon' ? 'item active' : 'item'} id="pokemon"/>
       </a>
     </div>
   )
